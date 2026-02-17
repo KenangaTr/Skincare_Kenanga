@@ -1,6 +1,7 @@
 import RenderingBadge from "./RenderingBadge";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CategoryGrid() {
     return (
@@ -11,9 +12,9 @@ export default function CategoryGrid() {
                 <div className="text-center mb-16">
                     <h2 className="text-4xl font-serif text-fabish-text mb-2">Shop by Category</h2>
                     <p className="text-gray-500 max-w-md mx-auto">Explore our full range of skincare products, each formulated to address different skin concerns.</p>
-                    <button className="mt-6 bg-fabish-lime text-fabish-text px-6 py-2 rounded-full font-bold text-sm hover:bg-lime-400 transition-colors">
+                    <Link href="/shop" className="mt-6 bg-[#FFC0CB] text-fabish-text px-6 py-2 rounded-full font-bold text-sm hover:bg-pink-300 transition-colors inline-block border border-fabish-text/10 shadow-lg shadow-fabish-green/10">
                         Explore Now
-                    </button>
+                    </Link>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
