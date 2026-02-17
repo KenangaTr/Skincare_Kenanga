@@ -1,5 +1,6 @@
 import RenderingBadge from "./RenderingBadge";
 import { Quote } from "lucide-react";
+import Image from "next/image";
 
 async function getTestimonials() {
     try {
@@ -36,9 +37,14 @@ export default async function Testimonials() {
                         <div key={testimonial.id} className="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/10 relative hover:bg-white/20 transition-colors duration-300">
                             <Quote className="absolute top-8 right-8 w-12 h-12 text-fabish-lime/20" />
                             <div className="flex items-center space-x-4 mb-6">
-                                <div className="w-14 h-14 bg-fabish-cream rounded-full border-2 border-fabish-lime p-1">
-                                    <div className="w-full h-full bg-gray-300 rounded-full overflow-hidden flex items-center justify-center text-gray-500 font-bold text-xs uppercase">
-                                        {testimonial.name.slice(0, 2)}
+                                <div className="w-14 h-14 bg-fabish-cream rounded-full border-2 border-fabish-lime p-1 relative">
+                                    <div className="w-full h-full rounded-full overflow-hidden relative">
+                                        <Image
+                                            src={testimonial.avatar}
+                                            alt={testimonial.name}
+                                            fill
+                                            className="object-cover"
+                                        />
                                     </div>
                                 </div>
                                 <div>
