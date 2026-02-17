@@ -3,6 +3,7 @@
 import { useState } from "react";
 import RenderingBadge from "./RenderingBadge";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export default function Newsletter() {
     const [email, setEmail] = useState("");
@@ -41,8 +42,13 @@ export default function Newsletter() {
                 {/* Image Placeholder */}
                 <div className="md:w-1/2 relative h-full flex justify-center">
                     <div className="relative w-64 h-80 bg-gray-300 rounded-[3rem] overflow-hidden border-4 border-white/20 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                        <div className="absolute inset-0 bg-gray-200 flex items-center justify-center text-gray-400">
-                            <span className="text-6xl">👩</span>
+                        <div className="absolute inset-0 bg-gray-200">
+                            <Image
+                                src="/model4.jpg"
+                                alt="Newsletter Model"
+                                fill
+                                className="object-cover"
+                            />
                         </div>
                     </div>
                 </div>
