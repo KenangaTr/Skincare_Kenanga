@@ -20,11 +20,11 @@ export default function Hero() {
                     </div>
 
                     {/* Central Oval Image - Overlapping text */}
-                    <div className="relative z-10 mb-8 mt-4 lg:mt-0">
+                    <div className="relative z-10 mb-8 mt-4 lg:-mt-24">
                         <div className="w-64 h-80 lg:w-[420px] lg:h-[580px] rounded-[50%] overflow-hidden border-[6px] border-white/20 shadow-2xl relative mx-auto">
                             <div className="absolute inset-0 bg-[#E5E5E5] flex items-center justify-center">
                                 <Image
-                                    src="/model1.jpg"
+                                    src="/MODEL2.png"
                                     alt="Woman applying face cream"
                                     fill
                                     className="object-cover"
@@ -45,8 +45,8 @@ export default function Hero() {
                     </div>
 
                     {/* Right Side Image Arc - Absolute positioned on desktop */}
-                    <div className="relative z-20 lg:absolute lg:bottom-0 lg:right-0 mt-12 lg:mt-0">
-                        <div className="w-64 h-80 lg:w-72 lg:h-[450px] rounded-t-[10rem] overflow-hidden border-4 border-white/20 relative mx-auto bg-fabish-cream/10 backdrop-blur-sm shadow-xl">
+                    <div className="relative z-20 lg:absolute lg:bottom-8 lg:right-0 mt-12 lg:mt-0">
+                        <div className="w-64 h-80 lg:w-60 lg:h-[380px] rounded-t-[10rem] overflow-hidden border-4 border-white/20 relative mx-auto bg-fabish-cream/10 backdrop-blur-sm shadow-xl">
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <Image
                                     src="/produk.jpg"
