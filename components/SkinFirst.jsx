@@ -33,7 +33,7 @@ export default async function SkinFirst() {
                         <div className="absolute inset-0 rounded-t-[15rem] rounded-b-[2rem] overflow-hidden border-8 border-white/20 shadow-2xl">
                             <div className="absolute inset-0 bg-gray-200">
                                 <Image
-                                    src="/model3.png"
+                                    src="/MODEL6.png"
                                     alt="Natural Beauty Model"
                                     fill
                                     className="object-cover"
