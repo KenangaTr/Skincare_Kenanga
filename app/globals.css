@@ -1,18 +1,12 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
+@layer theme {
   :root {
     --color-brand-pink: #F48FB1;
-    --color-charcoal: #1F2937; /* Tailwind gray-800 */
-    --color-light-gray: #F3F4F6; /* Tailwind gray-100 */
+    --color-charcoal: #1F2937;
+    --color-light-gray: #F3F4F6;
     --font-playfair: "Playfair Display", serif;
     --font-inter: "Inter", sans-serif;
-  }
-  
-  body {
-    @apply text-gray-800 bg-white;
   }
 }
 
@@ -20,7 +14,15 @@
   .font-serif {
     font-family: var(--font-playfair);
   }
+
   .font-sans {
     font-family: var(--font-inter);
   }
+}
+
+/* Base styles */
+body {
+  background-color: white;
+  color: var(--color-charcoal);
+  font-family: var(--font-inter);
 }

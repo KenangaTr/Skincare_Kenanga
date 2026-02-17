@@ -1,27 +1,28 @@
-import { Playfair_Display, Inter } from "next/font/google";
+import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-cormorant",
   display: "swap",
 });
 
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-montserrat",
   display: "swap",
 });
 
 export const metadata = {
-  title: "ILLUME Skincare",
-  description: "Transform Your Skin with ILLUME",
+  title: "Fabish Skincare",
+  description: "Unlock Your Natural Glow with Fabish.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="font-sans antialiased text-charcoal bg-white">
+    <html lang="en" className={`${cormorant.variable} ${montserrat.variable}`}>
+      <body className="font-sans antialiased text-fabish-text bg-fabish-cream selection:bg-fabish-green selection:text-white">
         {children}
       </body>
     </html>

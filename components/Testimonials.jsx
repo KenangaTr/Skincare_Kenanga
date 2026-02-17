@@ -1,10 +1,10 @@
 import RenderingBadge from "./RenderingBadge";
+import { Quote } from "lucide-react";
 
 async function getTestimonials() {
-    // SSR behavior: no-store forces dynamic fetch
     try {
         const res = await fetch("http://localhost:3000/api/testimonials", {
-            cache: "no-store",
+            cache: "no-store", // SSR: Dynamic fetch on every request
         });
         if (!res.ok) throw new Error("Failed to fetch testimonials");
         return res.json();
@@ -18,38 +18,38 @@ export default async function Testimonials() {
     const testimonials = await getTestimonials();
 
     return (
-        <section className="py-24 bg-white relative overflow-hidden">
+        <section className="py-24 bg-fabish-green text-white relative overflow-hidden rounded-t-[4rem]">
             <RenderingBadge mode="SSR" />
 
-            {/* Decorative Background */}
-            <div className="absolute top-0 left-0 w-64 h-64 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-            <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl lg:text-4xl font-serif font-bold text-gray-900 mb-4">
-                        What Our <span className="text-brand-pink">Customers</span> Say
+                <div className="text-center mb-20 animate-fade-in">
+                    <h2 className="text-4xl lg:text-5xl font-serif font-medium mb-4">
+                        What Our Clients Say
                     </h2>
-                    <p className="text-gray-500">Real stories from real users.</p>
+                    <p className="text-fabish-lime/80 font-sans tracking-wide uppercase text-sm">
+                        Real Stories, Real Results
+                    </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {testimonials.map((testimonial) => (
-                        <div key={testimonial.id} className="bg-white p-8 rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] border border-gray-100 relative">
-                            <div className="absolute top-6 right-8 text-6xl text-pink-100 font-serif leading-none">”</div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                    {testimonials.map((testimonial, idx) => (
+                        <div key={testimonial.id} className="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/10 relative hover:bg-white/20 transition-colors duration-300">
+                            <Quote className="absolute top-8 right-8 w-12 h-12 text-fabish-lime/20" />
                             <div className="flex items-center space-x-4 mb-6">
-                                <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
-                                    <div className="w-full h-full bg-gray-300 flex items-center justify-center text-gray-500 text-xs text-center p-1">User</div>
+                                <div className="w-14 h-14 bg-fabish-cream rounded-full border-2 border-fabish-lime p-1">
+                                    <div className="w-full h-full bg-gray-300 rounded-full overflow-hidden flex items-center justify-center text-gray-500 font-bold text-xs uppercase">
+                                        {testimonial.name.slice(0, 2)}
+                                    </div>
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
-                                    <p className="text-xs text-brand-pink font-semibold uppercase">{testimonial.role}</p>
+                                    <h4 className="font-bold text-white font-serif text-lg">{testimonial.name}</h4>
+                                    <p className="text-xs text-fabish-lime font-medium uppercase tracking-wider">{testimonial.role}</p>
                                 </div>
                             </div>
-                            <p className="text-gray-600 italic leading-relaxed mb-4 relative z-10">
+                            <p className="text-white/80 italic leading-relaxed mb-6 font-light">
                                 "{testimonial.content}"
                             </p>
-                            <div className="flex text-yellow-400 text-sm">
+                            <div className="flex text-fabish-lime text-sm space-x-1">
                                 {"★".repeat(testimonial.rating)}
                             </div>
                         </div>
