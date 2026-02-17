@@ -18,7 +18,7 @@ export default async function Testimonials() {
     const testimonials = await getTestimonials();
 
     return (
-        <section className="py-24 bg-fabish-green text-white relative overflow-hidden rounded-t-[4rem]">
+        <section className="py-24 bg-fabish-pink text-fabish-text relative overflow-hidden rounded-t-[4rem]">
             <RenderingBadge mode="SSR" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -42,11 +42,11 @@ export default async function Testimonials() {
                                     </div>
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-white font-serif text-lg">{testimonial.name}</h4>
+                                    <h4 className="font-bold text-fabish-text font-serif text-lg">{testimonial.name}</h4>
                                     <p className="text-xs text-fabish-lime font-medium uppercase tracking-wider">{testimonial.role}</p>
                                 </div>
                             </div>
-                            <p className="text-white/80 italic leading-relaxed mb-6 font-light">
+                            <p className="text-fabish-text/80 italic leading-relaxed mb-6 font-light">
                                 "{testimonial.content}"
                             </p>
                             <div className="flex text-fabish-lime text-sm space-x-1">

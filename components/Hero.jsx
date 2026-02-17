@@ -3,17 +3,17 @@ import RenderingBadge from "./RenderingBadge";
 
 export default function Hero() {
     return (
-        <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-fabish-green text-white min-h-screen flex items-center rounded-b-[4rem]">
+        <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-fabish-pink text-fabish-text min-h-screen flex items-center rounded-b-[4rem]">
             <RenderingBadge mode="SSG" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
                 <div className="text-center relative flex flex-col items-center">
                     {/* Main Title - Layered behind image significantly */}
                     <div className="relative z-0 mb-[-60px] lg:mb-[-140px] select-none pointer-events-none">
-                        <h1 className="text-6xl lg:text-[11rem] font-serif font-medium leading-[0.8] tracking-tighter opacity-90 text-white mix-blend-overlay">
+                        <h1 className="text-6xl lg:text-[11rem] font-serif font-medium leading-[0.8] tracking-tighter opacity-20 text-fabish-text">
                             Unlock Your <br />
                         </h1>
-                        <h1 className="text-6xl lg:text-[11rem] font-serif font-medium leading-[0.8] tracking-tighter opacity-90 text-white mix-blend-overlay italic relative left-12 lg:left-36">
+                        <h1 className="text-6xl lg:text-[11rem] font-serif font-medium leading-[0.8] tracking-tighter opacity-20 text-fabish-text italic relative left-12 lg:left-36">
                             Natural Glow
                         </h1>
                     </div>
@@ -48,10 +48,11 @@ export default function Hero() {
                         <div className="w-64 h-80 lg:w-72 lg:h-[450px] rounded-t-[10rem] overflow-hidden border-4 border-white/20 relative mx-auto bg-fabish-cream/10 backdrop-blur-sm shadow-xl">
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <Image
-                                    src="/hero_skincare_product.svg"
+                                    src="/produk.jpg"
                                     alt="Skincare Products"
                                     fill
-                                    className="object-contain p-8 drop-shadow-xl"
+                                    className="object-cover"
+                                    priority
                                 />
                             </div>
                             <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 w-full text-center">

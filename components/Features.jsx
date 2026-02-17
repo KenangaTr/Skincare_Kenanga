@@ -3,7 +3,7 @@ import { Play } from "lucide-react";
 
 export default function Features() {
     return (
-        <section className="py-24 bg-fabish-cream relative">
+        <section className="py-24 bg-fabish-pink relative">
             <RenderingBadge mode="SSG" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

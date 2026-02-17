@@ -16,7 +16,7 @@ export const metadata = {
 
 export default function Home() {
     return (
-        <main className="min-h-screen bg-fabish-cream selection:bg-fabish-green selection:text-white">
+        <main className="min-h-screen bg-fabish-pink selection:bg-fabish-lime selection:text-white">
             <Navbar />
             <Hero />
             <CategoryGrid />

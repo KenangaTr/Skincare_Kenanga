@@ -18,7 +18,7 @@ export default function Newsletter() {
     };
 
     return (
-        <section className="py-24 relative overflow-hidden bg-fabish-green text-white rounded-xl mx-4 lg:mx-8 mb-8 my-8">
+        <section className="py-24 relative overflow-hidden bg-fabish-pink text-fabish-text rounded-xl mx-4 lg:mx-8 mb-8 my-8">
             <RenderingBadge mode="CSR" />
 
             {/* Background Image/Overlay */}
@@ -29,7 +29,7 @@ export default function Newsletter() {
                     <h2 className="text-3xl lg:text-4xl font-serif font-medium mb-4 leading-tight">
                         Ready to Transform <br /> Your Skin?
                     </h2>
-                    <p className="text-white/80 text-lg mb-8 font-light">
+                    <p className="text-fabish-text/80 text-lg mb-8 font-light">
                         Personalized skincare solutions for verified results.
                         Find the answer to your skincare concerns.
                     </p>

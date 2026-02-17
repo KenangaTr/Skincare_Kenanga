@@ -8,10 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'fabish-green': '#8BA888', // Sage
-        'fabish-lime': '#A3E635', // Lime Accents
-        'fabish-cream': '#F9F9F7', // Off-white/Cream
-        'fabish-text': '#0F2F18', // Dark Forest Green
+        'fabish-green': '#FFC0CB', // Pink (Primary Background)
+        'fabish-lime': '#FF69B4', // Hot Pink (Accents)
+        'fabish-cream': '#FFC0CB', // Pink (Secondary Background)
+        'fabish-pink': '#FFC0CB', // Explicit Pink
+        'fabish-text': '#0F2F18', // Keep Dark Text for contrast
         'brand-pink': '#F48FB1', // Keeping for legacy/fallback if needed during transition
       },
       fontFamily: {
