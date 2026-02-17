@@ -3,7 +3,7 @@ export default function Footer() {
         <footer className="bg-white pt-24 pb-12 border-t border-gray-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-                    <div className="space-y-4">
+                    <div className="space-y-4" id="about-us">
                         <h3 className="font-serif text-3xl font-bold text-fabish-text flex items-center gap-2">
                             <span>✿</span> KennyLabs
                         </h3>
@@ -18,7 +18,7 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    <div>
+                    <div id="contact">
                         <h4 className="font-bold mb-6 text-fabish-text uppercase tracking-wider text-xs">Menu</h4>
                         <ul className="space-y-3 text-sm text-gray-600 font-medium">
                             <li><a href="#" className="hover:text-fabish-green transition-colors">About</a></li>

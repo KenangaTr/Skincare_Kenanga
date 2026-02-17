@@ -15,11 +15,11 @@ export default function Navbar() {
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex space-x-10 font-sans font-medium text-sm tracking-wide">
-                        <Link href="#" className="text-fabish-text hover:text-fabish-green transition-colors">Home</Link>
-                        <Link href="#" className="text-fabish-text hover:text-fabish-green transition-colors">Shop</Link>
-                        <Link href="#" className="text-fabish-text hover:text-fabish-green transition-colors">Products</Link>
-                        <Link href="#" className="text-fabish-text hover:text-fabish-green transition-colors">About Us</Link>
-                        <Link href="#" className="text-fabish-text hover:text-fabish-green transition-colors">Contact</Link>
+                        <Link href="/" className="text-fabish-text hover:text-fabish-green transition-colors">Home</Link>
+                        <Link href="/#shop-by-product" className="text-fabish-text hover:text-fabish-green transition-colors">Shop</Link>
+                        <Link href="/shop" className="text-fabish-text hover:text-fabish-green transition-colors">Products</Link>
+                        <Link href="/#about-us" className="text-fabish-text hover:text-fabish-green transition-colors">About Us</Link>
+                        <Link href="/#contact" className="text-fabish-text hover:text-fabish-green transition-colors">Contact</Link>
                     </div>
 
                     {/* Icons */}
