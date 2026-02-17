@@ -4,11 +4,11 @@ import RenderingBadge from "./RenderingBadge";
 
 export default function Hero() {
     return (
-        <section className="relative pt-24 pb-20 lg:pt-28 lg:pb-32 overflow-hidden bg-fabish-pink text-fabish-text min-h-screen flex items-center rounded-b-[4rem]">
+        <section className="relative pt-20 pb-20 lg:pt-24 lg:pb-32 overflow-hidden bg-fabish-pink text-fabish-text min-h-screen flex items-center rounded-b-[4rem]">
             <RenderingBadge mode="SSG" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-                <div className="text-center relative flex flex-col items-center">
+                <div className="text-center relative flex flex-col items-center -mt-4 lg:-mt-8">
                     {/* Main Title - Layered behind image significantly */}
                     <div className="relative z-20 mb-[-40px] lg:mb-[-100px] select-none pointer-events-none">
                         <h1 className="text-6xl lg:text-9xl font-serif font-light leading-tight tracking-tight text-white/90 drop-shadow-md relative left-0 lg:-left-24">
