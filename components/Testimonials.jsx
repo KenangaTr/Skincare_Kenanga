@@ -47,7 +47,7 @@ export default async function Testimonials() {
                                 </div>
                             </div>
                             <p className="text-fabish-text/80 italic leading-relaxed mb-6 font-light">
-                                "{testimonial.content}"
+                                {`"${testimonial.content}"`}
                             </p>
                             <div className="flex text-fabish-lime text-sm space-x-1">
                                 {"★".repeat(testimonial.rating)}

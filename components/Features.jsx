@@ -57,7 +57,7 @@ export default function Features() {
                             </li>
                         </ul>
 
-                        <button className="bg-fabish-lime text-fabish-text px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform shadow-lg shadow-lime-500/20">
+                        <button className="bg-brand-pink text-fabish-text px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform shadow-lg shadow-lime-500/20">
                             Learn More
                         </button>
                     </div>

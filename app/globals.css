@@ -1,13 +1,12 @@
 @import "tailwindcss";
 
-@layer theme {
-  :root {
-    --color-brand-pink: #F48FB1;
-    --color-charcoal: #1F2937;
-    --color-light-gray: #F3F4F6;
-    --font-playfair: "Playfair Display", serif;
-    --font-inter: "Inter", sans-serif;
-  }
+@theme {
+  --color-brand-pink: #F48FB1;
+  --color-fabish-pink: #FFC0CB;
+  --color-charcoal: #1F2937;
+  --color-light-gray: #F3F4F6;
+  --font-playfair: "Playfair Display", serif;
+  --font-inter: "Inter", sans-serif;
 }
 
 @layer utilities {
@@ -25,4 +24,22 @@ body {
   background-color: white;
   color: var(--color-charcoal);
   font-family: var(--font-inter);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FFC0CB;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #F48FB1;
 }

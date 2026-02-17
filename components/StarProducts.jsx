@@ -37,10 +37,10 @@ export default async function StarProducts() {
 
                     {/* Arrow Buttons */}
                     <div className="flex space-x-4">
-                        <button className="w-12 h-12 rounded-full border border-fabish-text/10 flex items-center justify-center text-fabish-text hover:bg-fabish-green hover:text-white transition-all group">
+                        <button className="w-12 h-12 rounded-full border border-fabish-text/10 flex items-center justify-center text-fabish-text hover:bg-fabish-pink hover:text-white transition-all group ">
                             <ArrowRight className="w-5 h-5 rotate-180 group-hover:scale-110 transition-transform" />
                         </button>
-                        <button className="w-12 h-12 rounded-full bg-fabish-green flex items-center justify-center text-white hover:bg-fabish-lime hover:text-fabish-text transition-all shadow-lg shadow-fabish-green/30 group">
+                        <button className="w-12 h-12 rounded-full bg-brand-pink flex items-center justify-center text-white hover:bg-fabish-pink hover:text-fabish-text transition-all shadow-lg shadow-fabish-green/30 group">
                             <ArrowRight className="w-5 h-5 group-hover:scale-110 transition-transform" />
                         </button>
                     </div>

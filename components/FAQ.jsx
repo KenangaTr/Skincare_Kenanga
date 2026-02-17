@@ -40,7 +40,7 @@ export default function FAQ() {
                         Frequently Asked Questions
                     </h2>
                     <p className="text-gray-500 font-sans max-w-xl mx-auto">
-                        We understand that skincare can be complex, so we've gathered the most common questions to help guide you on your journey to healthy, beautiful skin. Find answers to your skincare concerns.
+                        We understand that skincare can be complex, so we&apos;ve gathered the most common questions to help guide you on your journey to healthy, beautiful skin. Find answers to your skincare concerns.
                     </p>
                 </div>
 
@@ -49,13 +49,13 @@ export default function FAQ() {
                         <div key={idx} className="border border-fabish-text/10 rounded-2xl overflow-hidden bg-white/50 backdrop-blur-sm transition-all duration-300 hover:shadow-md">
                             <button
                                 onClick={() => setOpenIndex(openIndex === idx ? -1 : idx)}
-                                className={`w-full flex items-center justify-between p-6 text-left transition-colors ${openIndex === idx ? 'bg-fabish-green text-white' : 'hover:bg-gray-50'}`}
+                                className={`w-full flex items-center justify-between p-6 text-left transition-colors ${openIndex === idx ? 'bg-brand-pink text-white' : 'hover:bg-gray-50'}`}
                             >
                                 <span className="font-serif font-medium text-lg">{faq.question}</span>
                                 {openIndex === idx ? (
                                     <Minus className="w-5 h-5 flex-shrink-0" />
                                 ) : (
-                                    <Plus className="w-5 h-5 flex-shrink-0 text-fabish-green" />
+                                    <Plus className="w-5 h-5 flex-shrink-0 text-fabish-pink" />
                                 )}
                             </button>
                             <div

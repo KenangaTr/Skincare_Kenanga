@@ -10,10 +10,10 @@ export default function Hero() {
                 <div className="text-center relative flex flex-col items-center">
                     {/* Main Title - Layered behind image significantly */}
                     <div className="relative z-0 mb-[-60px] lg:mb-[-140px] select-none pointer-events-none">
-                        <h1 className="text-6xl lg:text-[11rem] font-serif font-medium leading-[0.8] tracking-tighter opacity-20 text-fabish-text">
+                        <h1 className="text-6xl lg:text-[11rem] font-serif font-medium leading-[0.8] tracking-tighter text-white">
                             Unlock Your <br />
                         </h1>
-                        <h1 className="text-6xl lg:text-[11rem] font-serif font-medium leading-[0.8] tracking-tighter opacity-20 text-fabish-text italic relative left-12 lg:left-36">
+                        <h1 className="text-6xl lg:text-[11rem] font-serif font-medium leading-[0.8] tracking-tighter text-white italic relative left-12 lg:left-36">
                             Natural Glow
                         </h1>
                     </div>
@@ -38,7 +38,7 @@ export default function Hero() {
                         <p className="text-lg font-sans font-light text-white/90 mb-8 leading-relaxed drop-shadow-sm">
                             Discover skincare products crafted with pure, natural ingredients. Elevate your beauty routine with solutions designed to nourish, protect, and renew your skin.
                         </p>
-                        <button className="bg-fabish-lime text-fabish-text px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform shadow-xl shadow-lime-500/20 text-sm tracking-wide uppercase">
+                        <button className="bg-brand-pink text-fabish-text px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform shadow-xl shadow-lime-500/20 text-sm tracking-wide uppercase">
                             Shop Now
                         </button>
                     </div>
