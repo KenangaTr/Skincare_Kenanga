@@ -30,10 +30,10 @@ export default function Navbar() {
                     {/* Icons & Mobile Menu Button */}
                     <div className="flex items-center gap-4">
                         <div className="flex items-center space-x-6 text-fabish-text">
-                            <button className="hidden md:flex hover:text-fabish-green transition-colors items-center">
-                                <span className="text-xs font-medium mr-1">My Account</span>
+                            <Link href="/admin/login" className="hidden md:flex hover:text-fabish-green transition-colors items-center">
+                                <span className="text-xs font-medium mr-1">Sign In</span>
                                 <User className="w-5 h-5 inline" />
-                            </button>
+                            </Link>
                             <button className="hover:text-fabish-green transition-colors relative">
                                 <ShoppingBag className="w-5 h-5" />
                                 <span className="absolute -top-1 -right-1 bg-fabish-lime text-fabish-text text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
@@ -95,10 +95,10 @@ export default function Navbar() {
                             Contact
                         </Link>
                         <div className="pt-4 border-t border-gray-200 w-full flex justify-center">
-                            <button className="flex items-center text-fabish-text hover:text-fabish-green px-3 py-2">
-                                <span className="text-sm font-medium mr-2">My Account</span>
+                            <Link href="/admin/login" onClick={() => setIsMenuOpen(false)} className="flex items-center text-fabish-text hover:text-fabish-green px-3 py-2">
+                                <span className="text-sm font-medium mr-2">Sign In</span>
                                 <User className="w-5 h-5" />
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
