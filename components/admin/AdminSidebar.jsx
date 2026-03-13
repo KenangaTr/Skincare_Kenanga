@@ -15,14 +15,14 @@ export default function AdminSidebar({ activePage = "dashboard" }) {
     return (
         <aside className="w-64 min-h-screen bg-white border-r border-fabish-green/10 flex flex-col shadow-sm">
             {/* Logo */}
-            <div className="px-6 py-6 border-b border-fabish-green/10">
+            <div className="px-6 py-6 border-b border-fabish-pink/30">
                 <Link href="/" className="flex items-center gap-2 group">
-                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-fabish-green to-fabish-text flex items-center justify-center shadow group-hover:shadow-md transition-shadow">
-                        <Sparkles className="w-5 h-5 text-fabish-cream" />
+                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-fabish-pink to-fabish-lime flex items-center justify-center shadow group-hover:shadow-md transition-shadow">
+                        <Sparkles className="w-5 h-5 text-fabish-text" />
                     </div>
                     <div>
                         <p className="font-bold font-serif text-fabish-text text-lg leading-none">KennyLabs</p>
-                        <p className="text-[10px] text-fabish-green/70 font-medium tracking-wide">Admin Panel</p>
+                        <p className="text-[10px] text-fabish-pink font-semibold tracking-wide">Admin Panel</p>
                     </div>
                 </Link>
             </div>
@@ -36,8 +36,8 @@ export default function AdminSidebar({ activePage = "dashboard" }) {
                 <Link
                     href="/admin/dashboard"
                     className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${activePage === "dashboard"
-                        ? "bg-fabish-cream text-fabish-green shadow-sm"
-                        : "text-gray-500 hover:bg-gray-50 hover:text-fabish-text"
+                        ? "bg-fabish-pink/20 text-fabish-pink shadow-sm"
+                        : "text-gray-500 hover:bg-fabish-pink/10 hover:text-fabish-pink"
                         }`}
                 >
                     <LayoutDashboard className="w-4 h-4" />
@@ -45,10 +45,10 @@ export default function AdminSidebar({ activePage = "dashboard" }) {
                 </Link>
 
                 <Link
-                    href="/admin/dashboard"
+                    href="/admin/products"
                     className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${activePage === "products"
-                        ? "bg-fabish-cream text-fabish-green shadow-sm"
-                        : "text-gray-500 hover:bg-gray-50 hover:text-fabish-text"
+                        ? "bg-fabish-pink/20 text-fabish-pink shadow-sm"
+                        : "text-gray-500 hover:bg-fabish-pink/10 hover:text-fabish-pink"
                         }`}
                 >
                     <Package className="w-4 h-4" />
@@ -57,7 +57,7 @@ export default function AdminSidebar({ activePage = "dashboard" }) {
             </nav>
 
             {/* Footer - Logout */}
-            <div className="px-4 py-5 border-t border-fabish-green/10">
+            <div className="px-4 py-5 border-t border-fabish-pink/30">
                 <button
                     onClick={handleLogout}
                     className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50 hover:text-red-700 transition-all"

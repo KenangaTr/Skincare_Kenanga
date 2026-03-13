@@ -1,237 +1,113 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { Plus, RefreshCw, Package, Star, TrendingUp, Search } from "lucide-react";
-import { toast } from "sonner";
+import { useState, useEffect } from "react";
 import AdminSidebar from "@/components/admin/AdminSidebar";
-import ProductTable from "@/components/admin/ProductTable";
-import ProductFormModal from "@/components/admin/ProductFormModal";
-import DeleteConfirmModal from "@/components/admin/DeleteConfirmModal";
-import { adminApi } from "@/lib/adminApi";
+import { Package, Star, TrendingUp } from "lucide-react";
 
-export default function AdminDashboard() {
-    const [products, setProducts] = useState([]);
-    const [filteredProducts, setFilteredProducts] = useState([]);
+export default function AdminDashboardPage() {
+    const [stats, setStats] = useState({ total: 0, star: 0, bestseller: 0 });
     const [loading, setLoading] = useState(true);
-    const [search, setSearch] = useState("");
 
-    // Modals
-    const [formOpen, setFormOpen] = useState(false);
-    const [editProduct, setEditProduct] = useState(null);
-    const [deleteOpen, setDeleteOpen] = useState(false);
-    const [deleteProduct, setDeleteProduct] = useState(null);
-    const [deleteLoading, setDeleteLoading] = useState(false);
+    useEffect(() => {
+        const fetchStats = async () => {
+            try {
+                const res = await fetch('/api/products');
+                const products = await res.json();
 
-    const fetchProducts = useCallback(async () => {
-        try {
-            setLoading(true);
-            const res = await adminApi.getProducts();
-            const data = await res.json();
-            setProducts(data);
-            setFilteredProducts(data);
-        } catch {
-            toast.error("Failed to load products");
-        } finally {
-            setLoading(false);
-        }
+                setStats({
+                    total: products.length || 0,
+                    star: products.filter(p => p.category === 'star').length || 0,
+                    bestseller: products.filter(p => p.category === 'bestseller').length || 0
+                });
+            } catch (error) {
+                console.error("Failed to fetch products for stats:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchStats();
     }, []);
 
-    useEffect(() => {
-        fetchProducts();
-    }, [fetchProducts]);
-
-    // Search filter
-    useEffect(() => {
-        if (!search.trim()) {
-            setFilteredProducts(products);
-        } else {
-            const q = search.toLowerCase();
-            setFilteredProducts(
-                products.filter(
-                    (p) =>
-                        p.name.toLowerCase().includes(q) ||
-                        p.description?.toLowerCase().includes(q) ||
-                        p.category?.toLowerCase().includes(q)
-                )
-            );
-        }
-    }, [search, products]);
-
-    // Create
-    const handleCreate = () => {
-        setEditProduct(null);
-        setFormOpen(true);
-    };
-
-    // Edit
-    const handleEdit = (product) => {
-        setEditProduct(product);
-        setFormOpen(true);
-    };
-
-    // Submit create or edit
-    const handleFormSubmit = async (data) => {
-        try {
-            let res;
-            if (editProduct) {
-                res = await adminApi.updateProduct(editProduct.id, data);
-            } else {
-                res = await adminApi.createProduct(data);
-            }
-
-            if (!res.ok) {
-                const err = await res.json();
-                toast.error(err.error || "Operation failed");
-                return;
-            }
-
-            await fetchProducts();
-            setFormOpen(false);
-            setEditProduct(null);
-            toast.success(editProduct ? "Product updated!" : "Product created!");
-        } catch {
-            toast.error("Something went wrong");
-        }
-    };
-
-    // Delete
-    const handleDeleteOpen = (product) => {
-        setDeleteProduct(product);
-        setDeleteOpen(true);
-    };
-
-    const handleDeleteConfirm = async () => {
-        if (!deleteProduct) return;
-        setDeleteLoading(true);
-        try {
-            const res = await adminApi.deleteProduct(deleteProduct.id);
-            if (!res.ok) {
-                toast.error("Failed to delete product");
-                return;
-            }
-            await fetchProducts();
-            setDeleteOpen(false);
-            setDeleteProduct(null);
-            toast.success("Product deleted successfully");
-        } catch {
-            toast.error("Something went wrong");
-        } finally {
-            setDeleteLoading(false);
-        }
-    };
-
-    // Stats
-    const stats = {
-        total: products.length,
-        star: products.filter((p) => p.category === "star").length,
-        bestseller: products.filter((p) => p.category === "bestseller").length,
-    };
-
     return (
-        <div className="flex min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-gray-50 flex">
+            {/* Sidebar */}
             <AdminSidebar activePage="dashboard" />
 
-            <main className="flex-1 flex flex-col overflow-hidden">
-                {/* Top Bar */}
-                <header className="bg-white border-b border-fabish-green/10 px-8 py-5 flex items-center justify-between">
+            {/* Main Content */}
+            <main className="flex-1 overflow-y-auto w-full">
+                {/* Header Profile */}
+                <header className="bg-white border-b border-gray-100 flex items-center justify-between px-8 py-4 sticky top-0 z-10">
                     <div>
-                        <h1 className="text-xl font-bold font-serif text-fabish-text">Product Catalog</h1>
-                        <p className="text-xs text-fabish-green/60 mt-0.5">Manage your skincare products</p>
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <button
-                            onClick={fetchProducts}
-                            className="p-2 rounded-xl text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition"
-                            title="Refresh"
-                        >
-                            <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
-                        </button>
-                        <button
-                            onClick={handleCreate}
-                            className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-fabish-cream bg-gradient-to-r from-fabish-green to-fabish-text hover:from-fabish-lime hover:to-fabish-green shadow hover:shadow-md transition-all"
-                        >
-                            <Plus className="w-4 h-4" />
-                            Add Product
-                        </button>
+                        <h1 className="text-xl font-bold font-serif text-fabish-text">Dashboard</h1>
+                        <p className="text-sm text-gray-500 mt-1">Welcome back to KennyLabs Admin</p>
                     </div>
                 </header>
 
-                <div className="flex-1 overflow-y-auto px-8 py-6 space-y-6">
-                    {/* Stats Cards */}
-                    <div className="grid grid-cols-3 gap-4">
-                        <div className="bg-white rounded-2xl border border-fabish-green/10 p-5 flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow">
-                            <div className="w-11 h-11 bg-fabish-cream rounded-xl flex items-center justify-center">
-                                <Package className="w-5 h-5 text-fabish-green" />
-                            </div>
-                            <div>
-                                <p className="text-2xl font-bold font-serif text-fabish-text">{stats.total}</p>
-                                <p className="text-xs text-fabish-green/60 font-medium">Total Products</p>
-                            </div>
-                        </div>
-                        <div className="bg-white rounded-2xl border border-fabish-green/10 p-5 flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow">
-                            <div className="w-11 h-11 bg-fabish-cream rounded-xl flex items-center justify-center">
-                                <Star className="w-5 h-5 text-yellow-500" />
-                            </div>
-                            <div>
-                                <p className="text-2xl font-bold font-serif text-fabish-text">{stats.star}</p>
-                                <p className="text-xs text-fabish-green/60 font-medium">Star Products</p>
-                            </div>
-                        </div>
-                        <div className="bg-white rounded-2xl border border-fabish-green/10 p-5 flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow">
-                            <div className="w-11 h-11 bg-fabish-cream rounded-xl flex items-center justify-center">
-                                <TrendingUp className="w-5 h-5 text-fabish-lime" />
-                            </div>
-                            <div>
-                                <p className="text-2xl font-bold font-serif text-fabish-text">{stats.bestseller}</p>
-                                <p className="text-xs text-fabish-green/60 font-medium">Bestsellers</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Search Bar */}
-                    <div className="relative max-w-sm">
-                        <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300" />
-                        <input
-                            type="text"
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Search products..."
-                            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 text-sm text-fabish-text placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-fabish-lime bg-white transition"
-                        />
-                    </div>
-
-                    {/* Product Table */}
+                <div className="p-8 pb-20">
                     {loading ? (
-                        <div className="bg-white rounded-2xl border border-fabish-green/10 p-12 flex items-center justify-center">
-                            <div className="flex flex-col items-center gap-3">
-                                <div className="w-8 h-8 border-4 border-fabish-cream border-t-fabish-green rounded-full animate-spin" />
-                                <p className="text-sm text-fabish-green/60">Loading products...</p>
-                            </div>
+                        <div className="flex justify-center items-center py-20">
+                            <div className="w-8 h-8 border-4 border-fabish-pink/20 border-t-fabish-pink rounded-full animate-spin"></div>
                         </div>
                     ) : (
-                        <ProductTable
-                            products={filteredProducts}
-                            onEdit={handleEdit}
-                            onDelete={handleDeleteOpen}
-                        />
+                        <>
+                            {/* Decorative Hero/Welcome Banner with Pink */}
+                            <div className="bg-gradient-to-r from-fabish-pink/20 to-fabish-pink/5 rounded-3xl p-8 mb-8 border border-fabish-pink/30 relative overflow-hidden">
+                                <div className="absolute -right-20 -top-20 w-64 h-64 bg-fabish-pink/20 rounded-full blur-3xl"></div>
+                                <div className="relative z-10">
+                                    <h2 className="text-2xl font-bold font-serif text-fabish-text mb-2">Hello, Admin! 🌸</h2>
+                                    <p className="text-gray-600 max-w-md">
+                                        Here is what's happening with your store today. Manage your skincare products and keep that natural glow going!
+                                    </p>
+                                </div>
+                            </div>
+
+                            <h3 className="text-lg font-bold text-fabish-text font-serif mb-4">Quick Stats</h3>
+                            {/* Stats */}
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                {/* Total Products */}
+                                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-fabish-pink/30 transition-all group">
+                                    <div className="flex items-center justify-between">
+                                        <div>
+                                            <p className="text-sm font-medium text-gray-500 mb-1">Total Products</p>
+                                            <p className="text-3xl font-bold text-gray-800">{stats.total}</p>
+                                        </div>
+                                        <div className="w-12 h-12 bg-fabish-pink/10 group-hover:bg-fabish-pink/20 rounded-xl flex items-center justify-center transition-colors">
+                                            <Package className="w-6 h-6 text-fabish-pink group-hover:scale-110 transition-transform" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Star Products */}
+                                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-fabish-pink/30 transition-all group">
+                                    <div className="flex items-center justify-between">
+                                        <div>
+                                            <p className="text-sm font-medium text-gray-500 mb-1">Star Products</p>
+                                            <p className="text-3xl font-bold text-gray-800">{stats.star}</p>
+                                        </div>
+                                        <div className="w-12 h-12 bg-fabish-pink/10 group-hover:bg-fabish-pink/20 rounded-xl flex items-center justify-center transition-colors">
+                                            <Star className="w-6 h-6 text-fabish-pink group-hover:scale-110 transition-transform" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Bestsellers */}
+                                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-fabish-pink/30 transition-all group">
+                                    <div className="flex items-center justify-between">
+                                        <div>
+                                            <p className="text-sm font-medium text-gray-500 mb-1">Bestsellers</p>
+                                            <p className="text-3xl font-bold text-gray-800">{stats.bestseller}</p>
+                                        </div>
+                                        <div className="w-12 h-12 bg-fabish-pink/10 group-hover:bg-fabish-pink/20 rounded-xl flex items-center justify-center transition-colors">
+                                            <TrendingUp className="w-6 h-6 text-fabish-pink group-hover:scale-110 transition-transform" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
                     )}
                 </div>
             </main>
-
-            {/* Modals */}
-            <ProductFormModal
-                isOpen={formOpen}
-                product={editProduct}
-                onClose={() => { setFormOpen(false); setEditProduct(null); }}
-                onSubmit={handleFormSubmit}
-            />
-            <DeleteConfirmModal
-                isOpen={deleteOpen}
-                product={deleteProduct}
-                onClose={() => { setDeleteOpen(false); setDeleteProduct(null); }}
-                onConfirm={handleDeleteConfirm}
-                loading={deleteLoading}
-            />
         </div>
     );
 }

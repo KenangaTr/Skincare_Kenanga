@@ -39,21 +39,21 @@ export default function AdminLoginPage() {
         <div className="min-h-screen bg-fabish-cream flex items-center justify-center px-4">
             {/* Background decoration */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute -top-40 -right-40 w-96 h-96 bg-fabish-green/10 rounded-full blur-3xl" />
-                <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-fabish-lime/10 rounded-full blur-3xl" />
+                <div className="absolute -top-40 -right-40 w-96 h-96 bg-fabish-pink/20 rounded-full blur-3xl animate-blob" />
+                <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-fabish-lime/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
             </div>
 
             <div className="relative w-full max-w-sm">
                 {/* Card */}
                 <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-fabish-green/10 overflow-hidden">
                     {/* Header gradient bar */}
-                    <div className="h-1.5 bg-gradient-to-r from-fabish-lime via-fabish-green to-fabish-lime" />
+                    <div className="h-1.5 bg-gradient-to-r from-fabish-pink via-brand-pink to-fabish-pink" />
 
                     <div className="px-8 py-8">
                         {/* Logo */}
                         <div className="flex flex-col items-center mb-8">
-                            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-fabish-green to-fabish-text flex items-center justify-center shadow-lg mb-4">
-                                <Sparkles className="w-8 h-8 text-fabish-cream" />
+                            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-fabish-pink to-fabish-lime flex items-center justify-center shadow-lg mb-4">
+                                <Sparkles className="w-8 h-8 text-fabish-text" />
                             </div>
                             <h1 className="text-2xl font-bold font-serif text-fabish-text">KennyLabs</h1>
                             <p className="text-sm text-fabish-green/60 mt-1 font-medium">Admin Dashboard</p>
@@ -118,7 +118,7 @@ export default function AdminLoginPage() {
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="w-full mt-2 py-3 rounded-xl text-sm font-bold text-fabish-cream bg-gradient-to-r from-fabish-green to-fabish-text hover:from-fabish-lime hover:to-fabish-green shadow-lg hover:shadow-fabish-green/20 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+                                className="w-full mt-2 py-3 rounded-xl text-sm font-bold text-fabish-text bg-gradient-to-r from-fabish-pink to-brand-pink hover:opacity-90 shadow-lg hover:shadow-fabish-pink/20 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                             >
                                 {loading ? (
                                     <span className="flex items-center justify-center gap-2">
